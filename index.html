@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Secret World | Sonali ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #ff4d8d;
+            --light-pink: #ffcfe0;
+            --dark-pink: #e6396b;
+            --gold: #ffd166;
+            --purple: #a65dcf;
+            --dark-purple: #7b3cb6;
+            --white: #ffffff;
+            --light-bg: #fff8fb;
+            --gradient: linear-gradient(135deg, #ff4d8d 0%, #a65dcf 100%);
+            --gradient-gold: linear-gradient(135deg, #ffd166 0%, #ff9e6d 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light-bg);
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Login Screen - Super Attractive */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3.5rem;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(0.5deg); }
+        }
+
+        .login-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .password-container {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid var(--light-pink);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 3px rgba(255, 77, 141, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .login-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(255, 77, 141, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 77, 141, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .login-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .login-btn:hover::after {
+            left: 100%;
+        }
+
+        .error-message {
+            color: #ff3333;
+            margin-top: 1rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .hint-text {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        .main-header {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.5); }
+            50% { text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.8); }
+        }
+
+        .main-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.95;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: #7a3c00;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(255, 209, 102, 0.4);
+        }
+
+        /* Floating Elements */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.8rem;
+            animation: floatHeart 15s linear infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Story Container */
+        .story-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Story Cards - Super Attractive */
+        .story-card {
+            background: white;
+            border-radius: 25px;
+            padding: 2.8rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 77, 141, 0.1);
+        }
+
+        .story-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            box-shadow: 0 8px 20px rgba(255, 77, 141, 0.3);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: var(--dark-pink);
+            margin-bottom: 1.8rem;
+            padding-right: 70px;
+            line-height: 1.3;
+            position: relative;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .card-content {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--primary-pink);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(255, 77, 141, 0.1);
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        .hindi-line {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--purple);
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(166, 93, 207, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid var(--purple);
+            border-right: 4px solid var(--purple);
+            font-weight: 500;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(255, 77, 141, 0.05), rgba(166, 93, 207, 0.05));
+            border-left: 5px solid var(--primary-pink);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 15px 15px 0;
+            position: relative;
+            font-style: italic;
+            color: #666;
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 77, 141, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 280px;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03) rotate(1deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        /* Music Player */
+        .music-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q25,40 50,50 T100,50 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .music-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .music-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .music-player-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .play-btn {
+            background: var(--gradient-gold);
+            color: #7a3c00;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Special Message Section */
+        .special-message {
+            background: linear-gradient(135deg, #ffebf3, #fff0f9);
+            border: 3px solid var(--primary-pink);
+            border-radius: 25px;
+            padding: 3.5rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-message::before {
+            content: '💌';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            top: -30px;
+            right: -30px;
+        }
+
+        .message-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--dark-pink);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-content {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .message-highlight {
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
+        }
+
+        /* Caste Solution Section */
+        .solution-section {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 25px;
+            padding: 3.5rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            border: 2px dashed var(--purple);
+        }
+
+        .solution-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--dark-purple);
+            margin-bottom: 2rem;
+        }
+
+        .culture-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .culture-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border-top: 5px solid var(--purple);
+        }
+
+        .culture-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .culture-box.marwadi {
+            border-top-color: #ff9a00;
+        }
+
+        .culture-box.gujrati {
+            border-top-color: #00b894;
+        }
+
+        .culture-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .marwadi .culture-icon {
+            color: #ff9a00;
+        }
+
+        .gujrati .culture-icon {
+            color: #00b894;
+        }
+
+        .culture-box h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Final Promise */
+        .final-promise {
+            background: var(--gradient);
+            color: white;
+            border-radius: 25px;
+            padding: 4rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(255, 77, 141, 0.3);
+        }
+
+        .final-promise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .promise-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .promise-text {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-top: 3rem;
+            color: var(--gold);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: linear-gradient(135deg, #2d3047, #1a1a2e);
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            margin-top: 5rem;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-pink);
+        }
+
+        .footer-heart {
+            color: var(--primary-pink);
+            font-size: 2rem;
+            animation: heartbeat 1.2s infinite;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-title {
+                font-size: 3.8rem;
+            }
+            
+            .story-container {
+                padding: 0 1rem;
+            }
+            
+            .story-card {
+                padding: 2.5rem;
+            }
+            
+            .card-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .story-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .card-title {
+                font-size: 2.2rem;
+                padding-right: 60px;
+            }
+            
+            .card-number {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .login-container {
+                padding: 2.5rem;
+            }
+            
+            .login-title {
+                font-size: 3.2rem;
+            }
+            
+            .culture-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .culture-box {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .card-title {
+                font-size: 1.9rem;
+            }
+            
+            .hindi-line {
+                font-size: 1.5rem;
+            }
+            
+            .login-title {
+                font-size: 2.8rem;
+            }
+            
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-container">
+            <h1 class="login-title">Our Secret World</h1>
+            <p class="login-subtitle">A beautiful journey made just for us ❤️</p>
+            
+            <div class="password-container">
+                <input type="password" class="password-input" id="passwordInput" placeholder="Enter our special date (DDMMYYYY)">
+                <button class="login-btn" id="loginBtn">
+                    <i class="fas fa-heart"></i> Enter Our Love Story
+                </button>
+            </div>
+            
+            <p class="error-message" id="errorMessage">Oops! That's not our date. Try again?</p>
+            <p class="hint-text">Hint: The day our hearts found each other 💕</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header with floating hearts -->
+        <header class="main-header">
+            <div class="floating-hearts" id="floatingHearts"></div>
+            <h1 class="main-title">Sonali & My Forever</h1>
+            <p class="main-subtitle">From a simple cafe to eternal love - Our beautiful journey together</p>
+            <div class="date-badge">03.10.2025 → Our Beginning 💖</div>
+        </header>
+
+        <!-- Story Container -->
+        <div class="story-container">
+            <!-- Story 1 -->
+            <div class="story-card">
+                <div class="card-number">1</div>
+                <h2 class="card-title">The Cafe Where Magic Happened</h2>
+                <div class="card-content">
+                    <p>I was just hanging out with friends at <span class="highlight">Adi's Cafe</span> - a normal roadside paan shop. Then I saw you.</p>
+                    <p>My heart felt warm just looking at you. You were so beautiful, sitting there with your friends. I never thought I'd find my forever person in such a simple place!</p>
+                    <div class="hindi-line">Pyaar ki shuruaat ek chai ki tapri se hui, par kahani ban gayi zindagi bhar ki!</div>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-01-16 at 6.48.30 PM (1).jpeg" alt="Our special memory">
+                    <div class="image-overlay">
+                        <p>Our beautiful memories together</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-01-16 at 6.48.29 PM (1).jpeg" alt="Fun times">
+                    <div class="image-overlay">
+                        <p>Laughing and having fun</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-01-16 at 6.48.29 PM.jpeg" alt="Special moments">
+                    <div class="image-overlay">
+                        <p>Special moments with you</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="story-card">
+                <div class="card-number">2</div>
+                <h2 class="card-title">My First Ever Approach!</h2>
+                <div class="card-content">
+                    <p>I was so nervous! I'd never talked to a girl like this before. You were with 3 friends, so I asked my 2 friends to come with me.</p>
+                    <p>I said: <span class="highlight">"Could we hang out with you guys?"</span> So simple, but it changed everything!</p>
+                    <div class="quote-box">
+                        What we thought would be 5 minutes turned into 5 hours of amazing conversation. We became such good friends!
+                    </div>
+                    <div class="hindi-line">Pehli mulaqat, pehli baat, aur dil ne kaha - yeh hai woh jo tumhe zindagi bhar sath rahegi!</div>
+                </div>
+            </div>
+
+            <!-- Story 3 -->
+            <div class="story-card">
+                <div class="card-number">3</div>
+                <h2 class="card-title">UNO Nights & Buddha Wellness Spa</h2>
+                <div class="card-content">
+                    <p>Remember all our fun times? We played so much UNO under that funny sign - <span class="highlight">"Buddha Wellness Spa and Center"</span>!</p>
+                    <p>We played cricket, Truth and Dare, Antakshari, Dumb Charades... So many games, so much laughter!</p>
+                    <p>Slowly, our friends went their own ways, but you and me... we just kept getting closer. Every moment with you was special.</p>
+                </div>
+            </div>
+
+            <!-- Story 4 -->
+            <div class="story-card">
+                <div class="card-number">4</div>
+                <h2 class="card-title">The Walking Challenge & Holding Hands</h2>
+                <div class="card-content">
+                    <p>Our 21-day walking challenge only lasted 5 days, but those 5 days were magical!</p>
+                    <p>Because on one of those walks... I held your hand for the first time. I still remember that feeling.</p>
+                    <div class="quote-box">
+                        Your hand in mine felt like coming home. The warmth, the comfort... it filled my heart with so much joy.
+                    </div>
+                    <div class="hindi-line">Haath milate hi, dil ne kaha - yeh hai meri zindagi ki sabse khoobsurat shuruaat!</div>
+                </div>
+            </div>
+
+            <!-- Music Section -->
+            <div class="music-section">
+                <h2 class="music-title">Our Favorite Song</h2>
+                <p class="music-subtitle">"Radha Kese Na Jale" - The song that reminds me of us ❤️</p>
+                
+                <div class="music-player-container">
+                    <p>Every time I hear this song, I think of you. It's our special song now!</p>
+                    <button class="play-btn" id="playSongBtn">
+                        <i class="fas fa-play"></i> Play Our Song
+                    </button>
+                </div>
+            </div>
+
+            <!-- Story 5 -->
+            <div class="story-card">
+                <div class="card-number">5</div>
+                <h2 class="card-title">Pulsar Rides & Secret Dates</h2>
+                <div class="card-content">
+                    <p>Driving around the city with you on my Pulsar 125 was the best! You'd sometimes bring a friend because you were scared we'd get caught.</p>
+                    <p>But our alone times were special too - the mirror maze at the mall, reading story books together...</p>
+                    <div class="hindi-line">Gadi ki sawari, hawa mein udna, aur tumhare saath har lamha ek khwab sa lagta tha!</div>
+                </div>
+            </div>
+
+            <!-- Special Message -->
+            <div class="special-message">
+                <h2 class="message-title">My Important Message to You</h2>
+                <div class="message-content">
+                    <p>Sonali, I know you think I'm not happy because of you. You think I forget my happiness because of you.</p>
+                    <p class="message-highlight">THAT'S NOT TRUE AT ALL!</p>
+                    <p>You are my happiness. When I'm with you, I feel complete. When we talk, when we laugh, when we're just together - that's when I'm truly happy.</p>
+                    <p>Even when we have problems, even when we cry... those moments make our love stronger. They don't take away my happiness.</p>
+                    <p>You ARE my happiness, Sonali. Never forget that. 💖</p>
+                </div>
+            </div>
+
+            <!-- Story 6 -->
+            <div class="story-card">
+                <div class="card-number">6</div>
+                <h2 class="card-title">Long Distance & Balotra Days</h2>
+                <div class="card-content">
+                    <p>When you went to Balotra, I was really sad. But I told myself: <span class="highlight">"We can do long distance."</span></p>
+                    <p>And we did! We listened to music together, talked for hours, played online games...</p>
+                    <p>You took risks calling me from your strict house. Every call, every message meant the world to me.</p>
+                    <div class="hindi-line">Dooriyaan aayi par dil toh paas hi rahe, har pal tumhare saath bitaya!</div>
+                </div>
+            </div>
+
+            <!-- Caste Solution -->
+            <div class="solution-section">
+                <h2 class="solution-title">Marwadi & Gujrati - Our Beautiful Mix</h2>
+                <p class="card-content">Yes, you're Marwadi and I'm Gujrati. In India, inter-caste is tough. We cried about it together.</p>
+                
+                <div class="culture-boxes">
+                    <div class="culture-box marwadi">
+                        <div class="culture-icon">👑</div>
+                        <h4>Marwadi Sonali</h4>
+                        <p>Strong, beautiful, traditional, and my everything</p>
+                    </div>
+                    <div class="culture-box gujrati">
+                        <div class="culture-icon">🦚</div>
+                        <h4>Gujrati Me</h4>
+                        <p>Loving you more every single day</p>
+                    </div>
+                </div>
+                
+                <p class="card-content"><strong>But we WILL find a way.</strong> Love always finds a way. We'll talk to our families. We'll make them understand.</p>
+                <div class="hindi-line">Pyaar jeetega, hum jeetenge, bas ek dusre ka saath na chhodna!</div>
+            </div>
+
+            <!-- Final Promise -->
+            <div class="final-promise">
+                <h2 class="promise-title">My Promise to You</h2>
+                <div class="promise-text">
+                    I promise to always fight for us. I promise to never give up. I promise to make you smile every single day.
+                    <br><br>
+                    We have something special, Sonali. Something real. Something that doesn't come often in life.
+                    <br><br>
+                    I see our future together - happy, strong, and full of love. We'll look back at this time and smile, knowing our love was stronger than any problem.
+                </div>
+                <div class="signature">Forever and always yours 💕</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <h3 class="footer-title">Our Love Story</h3>
+            <p>Made with <span class="footer-heart">❤️</span> for my beautiful Sonali</p>
+            <p>This website is our special place, just for us</p>
+            <p>03.10.2025 → Forever and Ever</p>
+        </footer>
+    </div>
+
+    <script>
+        // Password protection
+        const loginScreen = document.getElementById('loginScreen');
+        const mainContent = document.getElementById('mainContent');
+        const passwordInput = document.getElementById('passwordInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Correct password: 03102025
+        const correctPassword = "03102025";
+        
+        loginBtn.addEventListener('click', checkPassword);
+        passwordInput.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') checkPassword();
+        });
+        
+        function checkPassword() {
+            if(passwordInput.value === correctPassword) {
+                // Success animation
+                loginBtn.innerHTML = '<i class="fas fa-heart"></i> Welcome My Love!';
+                loginBtn.style.background = 'linear-gradient(135deg, #00b894, #00cec9)';
+                
+                // Add celebration effect
+                createHearts(20);
+                
+                // Hide login and show main content
+                setTimeout(() => {
+                    loginScreen.style.opacity = '0';
+                    loginScreen.style.visibility = 'hidden';
+                    
+                    mainContent.style.display = 'block';
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                        
+                        // Show welcome message
+                        showMessage('Welcome to our world, my beautiful Sonali! ❤️', 'success');
+                        
+                        // Start floating hearts
+                        startFloatingHearts();
+                    }, 100);
+                }, 1000);
+            } else {
+                // Error effect
+                errorMessage.style.display = 'block';
+                passwordInput.style.borderColor = '#ff3333';
+                passwordInput.style.animation = 'shake 0.5s';
+                
+                setTimeout(() => {
+                    passwordInput.style.animation = '';
+                }, 500);
+                
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+        
+        // Create floating hearts
+        function startFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['❤️', '💖', '💗', '💓', '💕', '💞', '💘', '💝'];
+            
+            for(let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+                heart.style.animationDuration = `${Math.random() * 20 + 15}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(heart);
+            }
+        }
+        
+        // Create celebration hearts
+        function createHearts(count) {
+            const hearts = ['❤️', '💖', '💗', '💓'];
+            
+            for(let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        font-size: ${Math.random() * 30 + 20}px;
+                        z-index: 10000;
+                        pointer-events: none;
+                        animation: explode 1s forwards;
+                    `;
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Remove after animation
+                    setTimeout(() => heart.remove(), 1000);
+                }, i * 50);
+            }
+        }
+        
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+                20%, 40%, 60%, 80% { transform: translateX(10px); }
+            }
+            
+            @keyframes explode {
+                0% {
+                    transform: translate(-50%, -50%) scale(0.5);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(
+                        ${Math.random() * 200 - 100}px,
+                        ${Math.random() * 200 - 100}px
+                    ) scale(1.5);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Music player
+        const playSongBtn = document.getElementById('playSongBtn');
+        let isPlaying = false;
+        
+        playSongBtn.addEventListener('click', function() {
+            if(!isPlaying) {
+                isPlaying = true;
+                this.innerHTML = '<i class="fas fa-pause"></i> Playing Our Song';
+                this.style.background = 'linear-gradient(135deg, #ff7675, #fd79a8)';
+                
+                // Show message
+                showMessage('🎵 Playing "Radha Kese Na Jale" - Our special song!', 'music');
+                
+                // Create visualizer
+                createMusicVisualizer();
+            } else {
+                isPlaying = false;
+                this.innerHTML = '<i class="fas fa-play"></i> Play Our Song';
+                this.style.background = 'linear-gradient(135deg, #ffd166, #ff9e6d)';
+                
+                // Remove visualizer
+                const visualizer = document.querySelector('.visualizer');
+                if(visualizer) visualizer.remove();
+            }
+        });
+        
+        function createMusicVisualizer() {
+            const visualizer = document.createElement('div');
+            visualizer.className = 'visualizer';
+            visualizer.style.cssText = `
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 100px;
+                background: linear-gradient(to top, rgba(255,77,141,0.2), transparent);
+                z-index: -1;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                gap: 2px;
+                padding: 0 20px;
+            `;
+            
+            // Create bars
+            for(let i = 0; i < 50; i++) {
+                const bar = document.createElement('div');
+                bar.style.cssText = `
+                    width: 5px;
+                    background: linear-gradient(to top, var(--primary-pink), var(--purple));
+                    border-radius: 5px 5px 0 0;
+                    animation: barDance ${Math.random() * 0.5 + 0.5}s infinite alternate;
+                    animation-delay: ${Math.random() * 0.5}s;
+                `;
+                visualizer.appendChild(bar);
+                
+                // Random height
+                bar.style.height = `${Math.random() * 60 + 20}px`;
+            }
+            
+            document.body.appendChild(visualizer);
+            
+            // Add animation
+            const barStyle = document.createElement('style');
+            barStyle.textContent = `
+                @keyframes barDance {
+                    from { height: 20px; opacity: 0.5; }
+                    to { height: 80px; opacity: 1; }
+                }
+            `;
+            document.head.appendChild(barStyle);
+        }
+        
+        // Show message function
+        function showMessage(text, type) {
+            const message = document.createElement('div');
+            message.innerHTML = text;
+            message.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'success' ? 'linear-gradient(135deg, #00b894, #00cec9)' : 'linear-gradient(135deg, #a65dcf, #ff4d8d)'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                z-index: 10000;
+                font-weight: 600;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                animation: slideDown 0.5s ease, fadeOut 0.5s ease 2.5s forwards;
+                white-space: nowrap;
+            `;
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }
+        
+        // Add more animation styles
+        const messageStyle = document.createElement('style');
+        messageStyle.textContent = `
+            @keyframes slideDown {
+                from {
+                    top: -100px;
+                    opacity: 0;
+                }
+                to {
+                    top: 20px;
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(messageStyle);
+        
+        // Make story cards interactive
+        document.querySelectorAll('.story-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-12px) scale(1.01)';
+                }, 300);
+                
+                // Create ripple effect
+                createRipple(this);
+            });
+        });
+        
+        function createRipple(element) {
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 77, 141, 0.1);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            const size = Math.max(element.clientWidth, element.clientHeight);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${event.clientX - element.getBoundingClientRect().left - size/2}px`;
+            ripple.style.top = `${event.clientY - element.getBoundingClientRect().top - size/2}px`;
+            
+            element.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        }
+        
+        // Add ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+        
+        // Auto focus on password input
+        window.addEventListener('load', () => {
+            passwordInput.focus();
+        });
+    </script>
+</body>
+</html>
